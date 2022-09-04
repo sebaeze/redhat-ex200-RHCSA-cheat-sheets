@@ -90,9 +90,29 @@ parted /dev/vdb mklabel gpt
 parted /dev/vdb mkpart  primary xfs 2048s 1000MB
 udevadm settle
 sudo vi /etc/fstab    <-- for persistent mount filesystem
+sudo systemctl daemon-reload
 sudo reboot
+parted /dev/vdb mkpart primary xfs 2048s 1001MB
+udevadm settle
+mkfs.xfs /dev/vdb1  <--- format partition
+mount | egrep -i 'my_dir'
 ```
 
+```
+parted /dev/vdb  mkpart  swap-name-part linux-swap 1001MB 1257MB
+udevadm settle
+swapoff /dev/vdb2
+mkswap /dev/vdb2
+free
+swapon  /dev/vdb2
+free
+swapon --show
+lsblk -fs /dev/vdb2
+echo "UUID=xxxxxx-xxxxx-xxxx swap swap defaults 0 0" >> /etc/fstab
+swapon -a
+sudo systemctl daemon-reload
+sudo systemctl reboot
+```
 
 ## Troubleshooting
 
