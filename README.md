@@ -86,6 +86,63 @@ semanage boolean -l
 setsebool httpd_anon_write=1
 ```
 
+## Repositories and SW packages
+
+```
+subscription-manager register --username nnnn 
+subscription-manager list --available
+subscription-manager list --consumed
+subscription-manager attach
+subscription-manager unregister
+```
+
+```
+dnf list 'net*' | less
+dnf search     'mongodb'
+dnf search all 'mongodb'
+dnf info   cups
+dnf provides /bin/lp.cups
+dnf install -y cups
+dnf remove     cups
+dnf update
+dnf list kernel
+dnf group list
+dnf group install "xxxxxx"
+dnf history
+dnf repolist all
+dnf config-manager --enable  my-repo-id-rpms
+dnf config-manager --disable my-repo-id-rpms
+dnf config-manager --add-repo="https://www.repo.id/ss"
+cd /etc/yum.repos.d
+```
+
+```
+rpm 
+```
+
+## Storage
+
+```
+cat /etc/fstab
+lsblk -fp
+mount /dev/dva4 /home/my_dir
+mount uuid="xxxx-xxxx-xxxx-xxx" /home/my_dir
+umount /home/my_dir
+lsof
+```
+
+```
+parted -l /dev/vdb
+parted /dev/vdb unit s print
+parted /dev/vdb mklabel msdos
+parted /dev/vdb mklabel gpt
+parted /dev/vdb mkpart  primary xfs 2048s 1000MB
+udevadm settle
+sudo vi /etc/fstab    <-- for persistent mount filesystem
+sudo reboot
+```
+
+
 ## Troubleshooting
 
 ```
