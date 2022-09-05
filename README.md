@@ -98,6 +98,7 @@ mkfs.xfs /dev/vdb1  <--- format partition
 mount | egrep -i 'my_dir'
 ```
 
+### Swap
 ```
 parted /dev/vdb  mkpart  swap-name-part linux-swap 1001MB 1257MB
 udevadm settle
@@ -112,6 +113,11 @@ echo "UUID=xxxxxx-xxxxx-xxxx swap swap defaults 0 0" >> /etc/fstab
 swapon -a
 sudo systemctl daemon-reload
 sudo systemctl reboot
+```
+### Logical Volume - LVM
+
+```
+
 ```
 
 ## Troubleshooting
