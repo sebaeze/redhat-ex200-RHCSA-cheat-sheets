@@ -117,7 +117,13 @@ sudo systemctl reboot
 ### Logical Volume - LVM
 
 ```
-
+parted /dev/vdb mklabel gpt
+parted /dev/vdb mkpart primary 1MiB 769MiB
+parted /dev/vdb mkpart primary 770MiB 1026MiB
+parted /dev/vdb set 1 lvm on
+parted /dev/vdb set 2 lvm on
+udevadm settle
+pvcreate /dev/vdb1 /dev/vdb2
 ```
 
 ## Troubleshooting
