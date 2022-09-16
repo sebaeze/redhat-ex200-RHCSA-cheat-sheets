@@ -1,5 +1,29 @@
 # Cheat sheet for exam EX200 - Red Hat Certified System Administrator
 
+## Manage users and groups
+
+### New Group and user
+
+vi /etc/login.defs
+```
+PASS_MAX_DAYS=90
+```
+
+```bash
+#
+groupadd -g 50000 grouptest
+#
+for USER in user1 user2 user3; do
+   echo $USER
+   useradd -50000 $USER
+   #
+   usermod -e 90  $USER
+   chage   -d 0  -M 25
+   #
+done;
+#
+```
+
 ## Tune System Performance
 
 
