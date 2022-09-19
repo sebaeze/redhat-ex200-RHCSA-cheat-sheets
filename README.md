@@ -1,5 +1,22 @@
 # Cheat sheet for exam EX200 - Red Hat Certified System Administrator
 
+## Change root password
+
+1)  Type: reboot
+2)  Press any key except Enter
+3)  Ctrl+e
+4)  Find line that start with "Linux..". Go to the end of the line ( Ctrl+e ).
+5)  If any, remove the string "console="
+6)  Type rd.break
+7)  Press Ctrl+x for restart
+8)  Type mount -o remount,rw /sysroot
+9)  Type chroot /sysroot
+10) Type --> echo "root:mypass" | chpasswd
+11) Type --> touch /.autorelabel
+12) Type exit
+13) Type exit ( second time )
+
+
 ## Manage users and groups
 
 ### New Group and user
