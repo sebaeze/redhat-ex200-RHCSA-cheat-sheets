@@ -1,4 +1,4 @@
-# Cheat sheet for exam EX200 - Red Hat Certified System Administrator
+# Cheat sheet for Red Hat Linux
 
 ## Change root password
 
